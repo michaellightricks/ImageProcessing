@@ -14,6 +14,7 @@
 #import "UIImage+MBETextureUtilities.h"
 #import "MBEMainBundleTextureProvider.h"
 #import "MBEKuwaharaFilter.h"
+#import "MBEBilateralFilter.h"
 
 @interface MBEViewController ()
 
@@ -22,6 +23,7 @@
 @property (nonatomic, strong) MBESaturationAdjustmentFilter *desaturateFilter;
 @property (nonatomic, strong) MBEGaussianBlur2DFilter *blurFilter;
 @property (strong, nonatomic) MBEKuwaharaFilter *kuwaharaFilter;
+@property (strong, nonatomic) MBEBilateralFilter *bilateralFilter;
 
 @property (nonatomic, strong) dispatch_queue_t renderingQueue;
 @property (atomic, assign) uint64_t jobIndex;
@@ -44,7 +46,7 @@
 {
     self.context = [MBEContext newContext];
     
-    self.imageProvider = [MBEMainBundleTextureProvider textureProviderWithImageNamed:@"mandrill"
+    self.imageProvider = [MBEMainBundleTextureProvider textureProviderWithImageNamed:@"lena"
                                                                              context:self.context];
     
     self.desaturateFilter = [MBESaturationAdjustmentFilter filterWithSaturationFactor:self.saturationSlider.value
@@ -57,6 +59,10 @@
 
     self.kuwaharaFilter = [MBEKuwaharaFilter filterWithKernelSize:15 context:self.context];
   self.kuwaharaFilter.provider = self.imageProvider;
+
+  self.bilateralFilter = [MBEBilateralFilter filterWithKernelSize:15 rangeSigma:0.1
+                                                     context:self.context];
+  self.bilateralFilter.provider = self.imageProvider;
 }
 
 - (void)updateImage
@@ -73,10 +79,10 @@
         if (currentJobIndex != self.jobIndex)
             return;
 
-        self.blurFilter.radius = blurRadius;
+      self.blurFilter.radius = blurRadius;
         //self.desaturateFilter.saturationFactor = saturation;
 
-        id<MTLTexture> texture = self.kuwaharaFilter.texture;
+      id<MTLTexture> texture = self.bilateralFilter.texture;
         UIImage *image = [UIImage imageWithMTLTexture:texture];
         
         dispatch_async(dispatch_get_main_queue(), ^{

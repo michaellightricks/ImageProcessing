@@ -23,7 +23,7 @@
         _device = device ?: MTLCreateSystemDefaultDevice();
         _library = [_device newDefaultLibrary];
         _commandQueue = [_device newCommandQueue];
-      [self.commandQueue insertDebugCaptureBoundary];
+      //[self.commandQueue insertDebugCaptureBoundary];
     }
     return self;
 }

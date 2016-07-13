@@ -19,10 +19,11 @@ struct KernelUniforms {
 
 struct BilateralUniforms {
   unsigned short kernelHalfSize;
-  vector_int2 offsetStep;
+  vector_float2 offsetStep;
+  unsigned int count;
   float rangeSigma;
-  unsigned int groupWitdh;
-  unsigned int groupHeight;
+  unsigned int width;
+  unsigned int height;
 };
 
 typedef struct StatisticsType {

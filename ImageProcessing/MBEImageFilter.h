@@ -25,11 +25,14 @@
 
 - (instancetype)initWithFunctionName:(NSString *)functionName context:(MBEContext *)context;
 
-- (void)configureArgumentTableWithCommandEncoder:(id<MTLComputeCommandEncoder>)commandEncoder;
+- (void)configureArgumentTableWithCommandEncoder:(id<MTLComputeCommandEncoder>)commandEncoder
+                                 iterationNumber:(NSUInteger)iteration;
 
 - (MTLSize)threadGroupSize;
 
 - (MTLSize)threadGroupsCount:(MTLSize)threadGroupSize;
+
+@property (nonatomic) NSUInteger iterationsNumber;
 
 @end
 

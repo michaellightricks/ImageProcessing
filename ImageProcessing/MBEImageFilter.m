@@ -38,12 +38,14 @@
             return nil;
         }
         _dirty = YES;
+      _iterationsNumber = 1;
     }
     
     return self;
 }
 
 - (void)configureArgumentTableWithCommandEncoder:(id<MTLComputeCommandEncoder>)commandEncoder
+                                 iterationNumber:(NSUInteger)iteration
 {
 }
 
@@ -66,18 +68,20 @@
     MTLSize threadgroups = [self threadGroupsCount:threadgroupSize];
     
     id<MTLCommandBuffer> commandBuffer = [self.context.commandQueue commandBuffer];
-    
-    id<MTLComputeCommandEncoder> commandEncoder = [commandBuffer computeCommandEncoder];
 
-    [commandEncoder setComputePipelineState:self.pipeline];
-    [commandEncoder setTexture:inputTexture atIndex:0];
-    [commandEncoder setTexture:self.internalTexture atIndex:1];
-    [self configureArgumentTableWithCommandEncoder:commandEncoder];
-    [commandEncoder dispatchThreadgroups:threadgroups threadsPerThreadgroup:threadgroupSize];
-    [commandEncoder endEncoding];
+    for (int i = 0; i < self.iterationsNumber; ++i) {
+      id<MTLComputeCommandEncoder> commandEncoder = [commandBuffer computeCommandEncoder];
 
-    [self.timer start];
+      [commandEncoder setComputePipelineState:self.pipeline];
+      [commandEncoder setTexture:inputTexture atIndex:0];
+      [commandEncoder setTexture:self.internalTexture atIndex:1];
+      [self configureArgumentTableWithCommandEncoder:commandEncoder iterationNumber:i];
+      [commandEncoder dispatchThreadgroups:threadgroups threadsPerThreadgroup:threadgroupSize];
+      [commandEncoder endEncoding];
+    }
+  
     [commandBuffer commit];
+  [self.timer start];
     [commandBuffer waitUntilCompleted];
     CGFloat ms = [self.timer elapse];
     NSLog(@"processed in %f", ms);

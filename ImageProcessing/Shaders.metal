@@ -184,11 +184,11 @@ kernel void kuwahara_filter(texture2d<float, access::read> inTexture [[texture(0
 //}
 //
 //kernel void kuwahara_filter_collaborative2(texture2d<float, access::read> inTexture [[texture(0)]],
-//                            texture2d<float, access::write> outTexture [[texture(1)]],
-                            constant KuwaharaUniforms &uniforms [[buffer(0)]],
-//                            threadgroup Statistics *stats [[threadgroup(0)]],
-//                            threadgroup float4 *pixels [[threadgroup(1)]],
-//                            uint2 tid [[thread_position_in_threadgroup]],
+////                            texture2d<float, access::write> outTexture [[texture(1)]],
+//                            constant KernelUniforms &uniforms [[buffer(0)]],
+////                            threadgroup Statistics *stats [[threadgroup(0)]],
+////                            threadgroup float4 *pixels [[threadgroup(1)]],
+////                            uint2 tid [[thread_position_in_threadgroup]],
 //                            uint2 groupPos [[ threadgroup_position_in_grid ]],
 //                            uint2 groupSize [[ threads_per_threadgroup ]])
 //{

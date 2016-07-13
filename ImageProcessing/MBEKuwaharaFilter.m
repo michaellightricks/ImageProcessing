@@ -33,6 +33,7 @@ const int KERNEL_HALF_SIZE = 7;
 }
 
 - (void)configureArgumentTableWithCommandEncoder:(id<MTLComputeCommandEncoder>)commandEncoder
+                                 iterationNumber:(NSUInteger)iteration
 {
   struct KernelUniforms uniforms;
   uniforms.kernelHalfSize = (unsigned int)self.kernelSize / 2;

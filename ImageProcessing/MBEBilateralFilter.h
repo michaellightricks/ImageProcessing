@@ -9,7 +9,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MBEBilateralFilter : MBEImageFilter
 
-+ (instancetype)filterWithKernelSize:(NSUInteger)saturation context:(MBEContext *)context;
+- (instancetype)initWithKernelSize:(NSUInteger)saturation rangeSigma:(float) rangeSigma
+                           context:(MBEContext *)context;
+
++ (instancetype)filterWithKernelSize:(NSUInteger)saturation rangeSigma:(float) rangeSigma
+                             context:(MBEContext *)context;
 
 @property (nonatomic) NSUInteger kernelSize;
 
