@@ -44,7 +44,7 @@
 {
     self.context = [MBEContext newContext];
     
-    self.imageProvider = [MBEMainBundleTextureProvider textureProviderWithImageNamed:@"some"
+    self.imageProvider = [MBEMainBundleTextureProvider textureProviderWithImageNamed:@"mandrill"
                                                                              context:self.context];
     
     self.desaturateFilter = [MBESaturationAdjustmentFilter filterWithSaturationFactor:self.saturationSlider.value
@@ -76,7 +76,7 @@
         self.blurFilter.radius = blurRadius;
         //self.desaturateFilter.saturationFactor = saturation;
 
-        id<MTLTexture> texture = self.blurFilter.texture;
+        id<MTLTexture> texture = self.kuwaharaFilter.texture;
         UIImage *image = [UIImage imageWithMTLTexture:texture];
         
         dispatch_async(dispatch_get_main_queue(), ^{
