@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		642425011D1199150006658B /* MBETimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 642425001D1199150006658B /* MBETimer.m */; };
+		642734AD1D3621F6000CC59E /* MBEBilateralFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 642734AC1D3621F6000CC59E /* MBEBilateralFilter.m */; };
+		642734AF1D3623C4000CC59E /* Bilateral.metal in Sources */ = {isa = PBXBuildFile; fileRef = 642734AE1D3623C4000CC59E /* Bilateral.metal */; };
 		64F54D521D11326D001402CA /* MBEKuwaharaFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F54D511D11326D001402CA /* MBEKuwaharaFilter.m */; };
 		8305801919E0A11800F24135 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8305801819E0A11800F24135 /* UIKit.framework */; };
 		8305801B19E0A11D00F24135 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8305801A19E0A11D00F24135 /* Metal.framework */; };
@@ -32,6 +34,9 @@
 		642424D71D1171690006658B /* SharedStructs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedStructs.h; sourceTree = "<group>"; };
 		642424FF1D1199150006658B /* MBETimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBETimer.h; sourceTree = "<group>"; };
 		642425001D1199150006658B /* MBETimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBETimer.m; sourceTree = "<group>"; };
+		642734AB1D3621F6000CC59E /* MBEBilateralFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBEBilateralFilter.h; sourceTree = "<group>"; };
+		642734AC1D3621F6000CC59E /* MBEBilateralFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBEBilateralFilter.m; sourceTree = "<group>"; };
+		642734AE1D3623C4000CC59E /* Bilateral.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Bilateral.metal; sourceTree = "<group>"; };
 		64F54D501D11326D001402CA /* MBEKuwaharaFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBEKuwaharaFilter.h; sourceTree = "<group>"; };
 		64F54D511D11326D001402CA /* MBEKuwaharaFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBEKuwaharaFilter.m; sourceTree = "<group>"; };
 		8305801819E0A11800F24135 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -134,6 +139,9 @@
 				642424D71D1171690006658B /* SharedStructs.h */,
 				642424FF1D1199150006658B /* MBETimer.h */,
 				642425001D1199150006658B /* MBETimer.m */,
+				642734AB1D3621F6000CC59E /* MBEBilateralFilter.h */,
+				642734AC1D3621F6000CC59E /* MBEBilateralFilter.m */,
+				642734AE1D3623C4000CC59E /* Bilateral.metal */,
 			);
 			name = Filters;
 			sourceTree = "<group>";
@@ -247,6 +255,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				83E00AD119E48CE0003B8E7B /* Shaders.metal in Sources */,
+				642734AD1D3621F6000CC59E /* MBEBilateralFilter.m in Sources */,
+				642734AF1D3623C4000CC59E /* Bilateral.metal in Sources */,
 				64F54D521D11326D001402CA /* MBEKuwaharaFilter.m in Sources */,
 				8371183E19DBA3AD003CB787 /* MBEViewController.mm in Sources */,
 				835A0B4A19E6244500C5BCB3 /* MBEMainBundleTextureProvider.m in Sources */,

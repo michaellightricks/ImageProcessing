@@ -11,8 +11,16 @@
 
 #include <simd/simd.h>
 
-struct KuwaharaUniforms {
+struct KernelUniforms {
   unsigned int kernelHalfSize;
+  unsigned int groupWitdh;
+  unsigned int groupHeight;
+};
+
+struct BilateralUniforms {
+  unsigned short kernelHalfSize;
+  vector_int2 offsetStep;
+  float rangeSigma;
   unsigned int groupWitdh;
   unsigned int groupHeight;
 };

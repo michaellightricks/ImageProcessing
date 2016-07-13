@@ -81,7 +81,7 @@ Statistics calcStatistics(texture2d<float, access::read> inTexture, int xStart, 
 
 kernel void kuwahara_filter_naive(texture2d<float, access::read> inTexture [[texture(0)]],
                                   texture2d<float, access::write> outTexture [[texture(1)]],
-                                  //constant KuwaharaUniforms &uniforms [[buffer(0)]],
+                                  //constant KernelUniforms &uniforms [[buffer(0)]],
                                   uint2 gid [[thread_position_in_grid]])
 {
   Statistics stats[4];
@@ -117,7 +117,7 @@ kernel void kuwahara_filter_naive(texture2d<float, access::read> inTexture [[tex
 
 kernel void kuwahara_filter_collaborative(texture2d<float, access::read> inTexture [[texture(0)]],
                             texture2d<float, access::write> outTexture [[texture(1)]],
-                            constant KuwaharaUniforms &uniforms [[buffer(0)]],
+                            constant KernelUniforms &uniforms [[buffer(0)]],
                             threadgroup Statistics *stats [[threadgroup(0)]],
                             //threadgroup float4 *pixels [[threadgroup(1)]],
                             uint2 tid [[thread_position_in_threadgroup]],
@@ -185,7 +185,7 @@ void loadData(texture2d<float, access::read> inTexture [[texture(0)]],
 
 kernel void kuwahara_filter_collaborative2(texture2d<float, access::read> inTexture [[texture(0)]],
                             texture2d<float, access::write> outTexture [[texture(1)]],
-                            constant KuwaharaUniforms &uniforms [[buffer(0)]],
+                            constant KernelUniforms &uniforms [[buffer(0)]],
                             threadgroup Statistics *stats [[threadgroup(0)]],
                             threadgroup float4 *pixels [[threadgroup(1)]],
                             uint2 tid [[thread_position_in_threadgroup]],
