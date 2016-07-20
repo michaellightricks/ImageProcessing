@@ -12,6 +12,14 @@
 
 using namespace metal;
 
+kernel void bilateral_filter(texture2d<float, access::read> inTexture [[texture(0)]],
+                             texture2d<float, access::read> guideTexture [[texture(2)]],
+                             texture2d<float, access::write> outTexture [[texture(1)]],
+                             constant BilateralUniforms &uniforms [[buffer(0)]],
+                             uint2 gridPos [[ thread_position_in_grid ]]) {
+
+
+}
 
 kernel void bilateral_filter(texture2d<float, access::read> inTexture [[texture(0)]],
                              texture2d<float, access::read> guideTexture [[texture(2)]],

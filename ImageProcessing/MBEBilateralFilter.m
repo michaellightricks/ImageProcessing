@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation MBEBilateralFilter
 
-static const NSUInteger kGroupSize = 16;
+static const NSUInteger kGroupSize = 8;
 
 - (instancetype)initWithKernelSize:(NSUInteger)size rangeSigma:(float)sigma
                            context:(MBEContext *)context {
@@ -91,7 +91,6 @@ static const NSUInteger kGroupSize = 16;
 
 - (MTLSize)threadGroupSize {
   return MTLSizeMake(kGroupSize, kGroupSize, 1);
-  //return MTLSizeMake(kGroupSize, kGroupSize, 1);
 }
 
 - (MTLSize)threadGroupsCount:(MTLSize)threadGroupSize {

@@ -93,7 +93,7 @@
 }
 
 - (MTLSize)threadGroupSize {
-  return MTLSizeMake(8, 8, 1);
+  return MTLSizeMake(16, 16, 1);
 }
 
 - (MTLSize)threadGroupsCount:(MTLSize)threadGroupSize {
